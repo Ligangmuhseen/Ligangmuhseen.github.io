@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact page</title>
+    <link rel="stylesheet" href="Css/styles.css">
+    <link rel="stylesheet" href="contact-form-template.css">
+
+    <!-- Link to icons for Font Awesome 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <style>
+         body {
+            background-color:darkgrey;
+            background-size: cover;
+            backdrop-filter: blur(10px);
+            
+         }
+         .mapp{
+            width: 100px;
+            font-size: smaller;
+            height: 40px;
+            margin-top: 10px;
+         }
+         .mapp:hover {
+            color: blue;
+         }
+
+
+
+
+    </style>
+
+</head>
+<body>
+    <h1><strong>My Contact</strong></h1>
+    <a class="home-map" href=""><button class="btn mapp">MAP</button></a>
+    <a href="login.html"><button class="btn1 btn">Login</button></a>
+
+
+
+	<!-- =============== BEGIN CONTACT FORM HTML ============= -->
+
+    <!-- Begin container for contact form -->
+
+    <div class="whole-form">
+
+        <div class="container-contact-form">
+            <h3>Get in touch</h3>
+            <p>Reasons why you should complete and submit this form.</p>
+            
+            <!-- Contact form starts here -->
+            <form id="contact-form">
+    
+                <!-- Begin contact form fields -->
+    
+                <div class="flex-row">
+                    <div class="item-name">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" name="name" id="full-name" placeholder="Your First and Last Name here." required>
+                    </div>
+                    <div class="item-email">
+                        <label for="email-address">Email</label>
+                        <input type="email" name="_replyto" id="email-address" placeholder="Your Email Address here." required>
+                    </div>
+                </div>
+    
+                <div class="flex-row">
+                    <div class="item-textarea">
+                        <label for="message">Message</label>
+                        <textarea rows="5" name="message" id="message" placeholder="Your Message here." required></textarea>
+                    </div>
+    
+                    <div class="item-btn">
+                        <button id="btn-submit" type="submit">Submit <i class="fas fa-arrow-circle-right"></i></button> 
+                    </div>
+                </div>
+    
+                <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
+                <!-- End contact form fields -->
+    
+            </form>
+            <!-- Contact form ends here -->
+    
+        </div>
+        <!-- End container for contact form -->
+    
+        <!-- =============== END CONTACT FORM HTML ============= -->
+    
+       <div class="mymap">
+
+       </div>
+
+
+       
+
+
+    </div>    
+    
+
+    <script>
+
+
+        let form = document.querySelector('#contact-form');
+            form.addEventListener('submit',function(event) {
+                
+                event.preventDefault();
+                // data from html tunaziweka kwenye javascript
+                let name = document.querySelector('#full-name').value;
+                let email = document.querySelector('#email-address').value;
+                let comment = document.querySelector('#message').value;
+                // tunachukua data tunaziweka kwenye mfumo wa object format...contact
+                let contact = {
+                        name1:name,
+                        email1:email,
+                        message1:comment
+                };
+                // tunachukua data tunaziweka kwenye mfumo wa json format
+                let contacts = JSON.parse(localStorage.getItem("contacts"))||[];
+        
+                // tunazituma data frommfumo wa object tunazipeleka ili usa aweze kuziona
+        
+                contacts.push(contact);
+        
+                // store data in locastorage
+                localStorage.setItem("contacts",JSON.stringify(contacts));
+                alert(`thank you ${name}`);
+                form.reset();
+        
+            
+            });
+        
+
+        let xx = document.querySelector('.home-map');
+        xx.addEventListener('click',function(event){
+            event.preventDefault();
+           document.querySelector('.mymap').innerHTML = '<marquee><iframe class="map" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d15844.921931725816!2d39.21362083092708!3d-6.862958620353907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sAirport%2C%20Dar%20es%20Salaam%2C%20Tanzania!5e0!3m2!1sen!2sus!4v1682811106136!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></marquee>';
+
+        });
+        
+        
+        </script>
+        
+        
+        
+        
+
+</body>
+</html>

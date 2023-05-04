@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"><link rel="stylesheet" href="./style.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- <form id="form3">
+        <input id="name" type="text" name="" value="" placeholder="name">
+        <input id="password" type="password" name="" value="" placeholder="password">
+        <input id="submit" type="submit" name="" value="login">
+        
+    </form> -->
+    
+
+    
+
+
+
+<div class="box-form">
+	<div class="left">
+		<div class="overlay">
+		<h1><marquee>Muhsin</marquee></h1>
+        <h1><marquee>Welcome</marquee></h1>
+		<p>We are very Proud of You,All We Need Is your Cooperation and Contribution </p>
+		<span>
+			<p>Fill The Contact form Below</p>
+			<a href="contact.html"><i class="fa fa-twitter" aria-hidden="true"></i> Contact Form</a>
+		</span>
+		</div>
+	</div>
+	
+	
+		<div class="right">
+		<h5>Login</h5>
+		<p>If you Have already have an account <a href="#">Login</a> below in less than a minute</p>
+		<div class="inputs">
+			<input type="text" id="username" placeholder="user name">
+			<br>
+			<input type="password" id="password" placeholder="password">
+		</div>
+			
+			<br><br>
+			
+		<div class="remember-me--forget-password">
+				<!-- Angular -->
+	<label>
+		<input type="checkbox" name="item" checked/>
+		<span class="text-checkbox">Remember me</span>
+	</label>
+			<p>forget password?</p>
+		</div>
+			
+			<br>
+			<button class="login">Login</button>
+	</div>
+	
+</div>
+<!-- partial -->
+  
+<div id="info"></div>
+
+</body>
+
+<script>
+    let contactinf = document.querySelector('.login');
+    let al = document.querySelector('.box-form')
+    contactinf.addEventListener('click',function(event){
+    event.preventDefault();
+    let nam = document.querySelector('#username').value;
+    let pass = document.querySelector('#password').value;
+
+
+ if (nam === "admin" && pass === "password") {
+       let contacts = JSON.parse(localStorage.getItem("contacts"))||[];
+       let contactinfo = "";
+       for(let a = 0;a < contacts.length;a++) {
+             contactinfo += "<h1>" + (a+1) + "</h1>";
+             contactinfo += "<p><strong>NAME:</strong>" + contacts[a].name1 + "</p>";
+             contactinfo += "<p><strong>EMAIL:</strong>" + contacts[a].email1 + "</p>";
+             contactinfo += "<p><strong>MESSAGE:</strong>" + contacts[a].message1 + "</p>";
+         };
+        
+         document.getElementById("info").innerHTML=contactinfo;
+ }
+ else {
+     alert("invalid username or password");
+ };
+
+//  box-form.reset();
+
+ });
+
+
+</script>
+
+</html>
